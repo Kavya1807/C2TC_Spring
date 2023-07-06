@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>User Management</title>
+	<link th:href="@{/css/bootstrap-min.css}" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+
+			<table class="table table-responsive table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Role</th>
+						<th>Gender</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${users}">
+						<td th:text="${user.name}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.role}"></td>
+						<td th:text="${user.gender}"></td>
+						<td>
+							<a class="btn btn-primary" th:if="${user.role} == 'ADMIN'">Update</a>
+							<a class="btn btn-danger" th:if="${user.role} == 'ADMIN'">Delete</a>
+							<a class="btn btn-primary" th:unless="${user.role} == 'ADMIN'">View</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>
